@@ -1,5 +1,15 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const Table = require('cli-table')
+
+let table = new Table()
+
+const output = scores => {
+  Object.keys(scores).forEach(category => {
+    table.push([category, scores[category]])
+  })
+  return table.toString()
+}
 
 function launchChromeAndRunLighthouse(url, opts = {}, config = null) {
   return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
@@ -17,6 +27,8 @@ test('performance audit', async () => {
     merged[category] = lhr.categories[category].score
     return merged
   }, {})
+
+  console.log(output(scores))
 
   expect(scores.performance).toBe(1)
   expect(scores.accessibility).toBe(1)
