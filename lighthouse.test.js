@@ -1,5 +1,15 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const Table = require('cli-table')
+
+let table = new Table()
+
+const output = scores => {
+  Object.keys(scores).forEach(category => {
+    table.push([category, scores[category]])
+  })
+  return table.toString()
+}
 
 function launchChromeAndRunLighthouse(url, opts = {}, config = null) {
   return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
@@ -11,12 +21,14 @@ function launchChromeAndRunLighthouse(url, opts = {}, config = null) {
 }
 
 test('performance audit', async () => {
-  const { lhr: report } = await launchChromeAndRunLighthouse('http://localhost:9000')
-
-  const scores = Object.keys(report.categories).reduce((merged, category) => {
-    merged[category] = report.categories[category].score
+  const { lhr } = await launchChromeAndRunLighthouse('http://localhost:9000')
+  
+  const scores = Object.keys(lhr.categories).reduce((merged, category) => {
+    merged[category] = lhr.categories[category].score
     return merged
   }, {})
+
+  console.log(output(scores))
 
   expect(scores.performance).toBe(1)
   expect(scores.accessibility).toBe(1)
