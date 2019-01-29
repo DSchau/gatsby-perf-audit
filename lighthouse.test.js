@@ -11,10 +11,10 @@ function launchChromeAndRunLighthouse(url, opts = {}, config = null) {
 }
 
 test('performance audit', async () => {
-  const { lhr: report } = await launchChromeAndRunLighthouse('http://localhost:9000')
-
-  const scores = Object.keys(report.categories).reduce((merged, category) => {
-    merged[category] = report.categories[category].score
+  const { lhr } = await launchChromeAndRunLighthouse('http://localhost:9000')
+  
+  const scores = Object.keys(lhr.categories).reduce((merged, category) => {
+    merged[category] = lhr.categories[category].score
     return merged
   }, {})
 

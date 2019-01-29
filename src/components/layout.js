@@ -49,7 +49,7 @@ class Layout extends React.Component {
                 paddingTop: 0,
               }}
             >
-              <div class="alert alert-primary" role="alert">
+              <div className="alert alert-primary" role="alert">
                 Welcome to my site!
               </div>
               {children}
