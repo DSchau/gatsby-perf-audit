@@ -2,7 +2,6 @@ const lighthouse = require('lighthouse')
 const chromeLauncher = require('chrome-launcher')
 const Table = require('cli-table')
 const net = require('net')
-const Promise = require('bluebird')
 
 const checkConnection = (host, port, timeout = 10000) => {
   return new Promise((resolve, reject) => {
