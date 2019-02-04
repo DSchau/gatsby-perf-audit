@@ -63,5 +63,4 @@ test('performance audit', async () => {
     expect(scores['best-practices']).toBeGreaterThanOrEqual(0.93)
     expect(scores.seo).toBe(1)
   }
-  return
 }, 30000)
