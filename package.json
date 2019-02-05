@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Dustin Schau <dustin@gatsbyjs.com>",
   "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.2.1",
     "gatsby": "^2.0.105",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-manifest": "^2.0.15",
@@ -13,6 +15,9 @@
     "gatsby-plugin-sharp": "^2.0.19",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.13",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
